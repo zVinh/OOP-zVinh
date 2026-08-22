@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Buoi_02\Program.cs" />
     <Compile Include="Buoi_02\Student Management .cs" />
-    <Compile Include="Buoi_03\The UserAccount Management System.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
