@@ -8,4 +8,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Buoi_03\**" />
+    <EmbeddedResource Remove="Buoi_03\**" />
+    <None Remove="Buoi_03\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="obj\" />
+  </ItemGroup>
+
 </Project>
