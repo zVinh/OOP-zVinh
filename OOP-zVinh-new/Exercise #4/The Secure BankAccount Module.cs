@@ -60,11 +60,13 @@ public class BankAccount
             }
             return false;
         }
-       if ( amount >0 && _balance >= amount)
+
+        _failedAttempts = 0; // Reset failed attempts on successful transaction
+
+        if ( amount >0 && _balance >= amount)
         {
             _balance -= amount;
             Console.WriteLine($"Withdrawal successful! New balance: {_balance:C}");
-            _failedAttempts = 0; // Reset failed attempts on successful transaction
             return true;
         }
         else if (amount <= 0)
