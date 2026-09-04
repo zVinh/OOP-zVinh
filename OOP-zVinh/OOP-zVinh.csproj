@@ -43,16 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Buoi_02\Program.cs" />
-    <Compile Include="Buoi_02\Student Management .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Buoi_01\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

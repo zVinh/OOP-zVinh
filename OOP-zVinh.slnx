@@ -1,4 +1,11 @@
 <Solution>
   <Project Path="OOP-zVinh-new/OOP-zVinh-new.csproj" Id="edfa4c52-825f-4f6f-9cf7-8ced67bab7e1" />
   <Project Path="OOP-zVinh/OOP-zVinh.csproj" Id="b76a571a-178d-42db-9dea-428943df75b4" />
+  <Project Path="season_01/season_01.csproj" Id="6ff350ed-b2e5-4215-9f1a-65705623589c" />
+  <Project Path="season_02/season_02.csproj" Id="51c96844-b88f-4079-bb74-46c1acd9717a" />
+  <Project Path="season_03/season_03.csproj" Id="a88fbecb-90cd-46b5-8f43-9a94c3e29bb2" />
+  <Project Path="season_03_exercise/season_03_exercise.csproj" Id="4afc2831-eda2-4546-a5a8-f345bb756a6f" />
+  <Project Path="season_04/season_04.csproj" Id="836b55d9-dd27-4d67-a38d-f0cdab2a11fc" />
+  <Project Path="season_04_exercise/season_04_exercise.csproj" Id="5c327482-3ff9-41f7-95d1-aa145964938f" />
+  <Project Path="season_05/season_05.csproj" Id="06454e8e-49e5-42ad-9f4e-fdcecbbf9b06" />
 </Solution>
