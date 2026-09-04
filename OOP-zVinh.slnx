@@ -1,6 +1,4 @@
 <Solution>
-  <Project Path="OOP-zVinh-new/OOP-zVinh-new.csproj" Id="edfa4c52-825f-4f6f-9cf7-8ced67bab7e1" />
-  <Project Path="OOP-zVinh/OOP-zVinh.csproj" Id="b76a571a-178d-42db-9dea-428943df75b4" />
   <Project Path="season_01/season_01.csproj" Id="6ff350ed-b2e5-4215-9f1a-65705623589c" />
   <Project Path="season_02/season_02.csproj" Id="51c96844-b88f-4079-bb74-46c1acd9717a" />
   <Project Path="season_03/season_03.csproj" Id="a88fbecb-90cd-46b5-8f43-9a94c3e29bb2" />
