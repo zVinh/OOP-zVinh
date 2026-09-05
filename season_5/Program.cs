@@ -1,4 +1,4 @@
-﻿namespace season_05
+﻿namespace season_5
 {
     internal class Program
     {

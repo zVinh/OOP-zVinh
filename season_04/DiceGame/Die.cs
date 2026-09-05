@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OOP_Prog.session_04
+
+namespace OOP_Prog.session_04.dice_game
 {
-    internal class Die
+    public class Die
     {
         //data fields
         private byte face;
 
-        public byte Face { 
-            get { return face; } 
+        public byte Face
+        {
+            get { return face; }
         }
-       
+
 
         public override bool Equals(object? obj)
         {
@@ -43,7 +45,7 @@ namespace OOP_Prog.session_04
             string s = "";
             switch (face)
             {
-                case 1: s= "Nhất"; break;
+                case 1: s = "Nhất"; break;
                 case 2: s = "Nhị"; break;
                 case 3: s = "Tam"; break;
                 case 4: s = "Tứ"; break;
@@ -59,11 +61,11 @@ namespace OOP_Prog.session_04
 
     class Test
     {
-       /* public static void Main(string[] args)
-        {
-            Console.OutputEncoding = Encoding.UTF8;
-            Die d = new Die();
-            Console.WriteLine(d);
-        }*/
+        /* public static void Main(string[] args)
+         {
+             Console.OutputEncoding = Encoding.UTF8;
+             Die d = new Die();
+             Console.WriteLine(d);
+         }*/
     }
 }
