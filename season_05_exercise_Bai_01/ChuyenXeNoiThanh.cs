@@ -35,8 +35,8 @@ namespace Module3.Bai_01 {
             this.SoKm = soKm;
         }
 
-        public string getSoTuyen() { return SoTuyen; }
-        public double getSoKm() { return SoKm; }
+        public string GetSoTuyen() { return SoTuyen; }
+        public double GetSoKm() { return SoKm; }
 
         public override string ToString()
         {

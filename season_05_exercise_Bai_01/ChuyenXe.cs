@@ -38,7 +38,7 @@ namespace Module3.Bai_01 {
             this.DoanhThu = doanhThu;
         }
 
-        public double getDoanhThu()
+        public double GetDoanhThu()
         {
             return DoanhThu;
         }
