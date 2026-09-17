@@ -2,43 +2,155 @@
 using System.Collections.Generic;
 using System.Text;
 using Model.Bai_02;
+using System.Linq;
 
-Console.OutputEncoding = Encoding.UTF8;
-
-// ===== TẠO DANH SÁCH =====
-Sach[] danhSach = {
-    // 3 sách giáo khoa
-    new SachGiaoKhoa("SGK001", new DateTime(2024,1,10),
-                     50_000, 5, "NXB Giáo Dục", true),
-    new SachGiaoKhoa("SGK002", new DateTime(2024,2,15),
-                     80_000, 3, "NXB Trẻ", false),
-    new SachGiaoKhoa("SGK003", new DateTime(2024,3,20),
-                     60_000, 4, "NXB Kim Đồng", true),
-    // 3 sách tham khảo
-    new SachThamKhao("STK001", new DateTime(2024,1,5),
-                     120_000, 2, "NXB Khoa Học", 10_000),
-    new SachThamKhao("STK002", new DateTime(2024,2,10),
-                     150_000, 1, "NXB Giáo Dục", 15_000),
-    new SachThamKhao("STK003", new DateTime(2024,3,15),
-                     200_000, 3, "NXB Trẻ", 20_000)
-};
-
-// ===== IN DANH SÁCH =====
-Console.WriteLine("========== DANH SÁCH SÁCH ==========");
-foreach (Sach s in danhSach)
-    Console.WriteLine(s);
-
-// ===== TÍNH TỔNG =====
-double tongSGK = 0, tongSTK = 0;
-foreach (Sach s in danhSach)
+class Program
 {
-    if (s is SachGiaoKhoa)
-        tongSGK += s.GetThanhTien();
-    else
-        tongSTK += s.GetThanhTien();
-}
+    static void Main(string[] args)
+    {
+        Console.OutputEncoding = Encoding.UTF8;
 
-Console.WriteLine("=====================================");
-Console.WriteLine($"Tổng thành tiền SGK: {tongSGK,12:N0} VND");
-Console.WriteLine($"Tổng thành tiền STK: {tongSTK,12:N0} VND");
-Console.WriteLine($"Tổng tất cả        : {tongSGK + tongSTK,12:N0} VND");
+        Sach[] danhSach =
+        {
+            // 3 sách giáo khoa
+            new SachGiaoKhoa(
+                "SGK001",
+                new DateTime(2024, 1, 10),
+                50000,
+                5,
+                "NXB Giáo Dục",
+                true),
+
+            new SachGiaoKhoa(
+                "SGK002",
+                new DateTime(2024, 2, 15),
+                80000,
+                3,
+                "NXB Trẻ",
+                false),
+
+            new SachGiaoKhoa(
+                "SGK003",
+                new DateTime(2024, 3, 20),
+                60000,
+                4,
+                "NXB Giáo Dục",
+                true),
+
+            // 3 sách tham khảo
+            new SachThamKhao(
+                "STK001",
+                new DateTime(2024, 1, 5),
+                120000,
+                2,
+                "NXB Khoa Học",
+                10000),
+
+            new SachThamKhao(
+                "STK002",
+                new DateTime(2024, 2, 10),
+                150000,
+                1,
+                "NXB Giáo Dục",
+                15000),
+
+            new SachThamKhao(
+                "STK003",
+                new DateTime(2024, 3, 15),
+                200000,
+                3,
+                "NXB Trẻ",
+                20000)
+        };
+
+        // In danh sách
+        Console.WriteLine("========== DANH SÁCH SÁCH ==========");
+
+        foreach (Sach s in danhSach)
+        {
+            Console.WriteLine(s);
+        }
+
+        // Tổng thành tiền từng loại
+        double tongSGK = 0;
+        double tongSTK = 0;
+
+        foreach (Sach s in danhSach)
+        {
+            if (s is SachGiaoKhoa)
+                tongSGK += s.GetThanhTien();
+            else if (s is SachThamKhao)
+                tongSTK += s.GetThanhTien();
+        }
+
+        Console.WriteLine("\n========== TỔNG THÀNH TIỀN ==========");
+        Console.WriteLine($"Tổng SGK: {tongSGK:N0} VND");
+        Console.WriteLine($"Tổng STK: {tongSTK:N0} VND");
+
+        // ===== TÌM SÁCH GIÁO KHOA THEO NXB =====
+        Console.WriteLine("\n===== HƯỚNG DẪN =====");
+        Console.WriteLine("Nhập Giao_Duc -> NXB Giáo Dục");
+        Console.WriteLine("Nhập Tre      -> NXB Trẻ");
+        Console.WriteLine("Nhập Kim_Dong -> NXB Kim Đồng");
+
+        Console.Write("\nNhập NXB K: ");
+        string k = (Console.ReadLine() ?? "").Trim();
+
+        string nxbCanTim = "";
+
+        switch (k)
+        {
+            case "Giao_Duc":
+                nxbCanTim = "NXB Giáo Dục";
+                break;
+
+            case "Tre":
+                nxbCanTim = "NXB Trẻ";
+                break;
+
+            case "Kim_Dong":
+                nxbCanTim = "NXB Kim Đồng";
+                break;
+
+            default:
+                Console.WriteLine("NXB không hợp lệ!");
+                Console.WriteLine("Chỉ được nhập: Giao_Duc, Tre, Kim_Dong");
+                return;
+        }
+
+        Console.WriteLine($"\n===== SGK CỦA {nxbCanTim} =====");
+
+        bool timThay = false;
+
+        foreach (Sach s in danhSach)
+        {
+            if (s is SachGiaoKhoa &&
+                s.NhaXuatBan == nxbCanTim)
+            {
+                Console.WriteLine(s);
+                timThay = true;
+            }
+        }
+
+        if (!timThay)
+        {
+            Console.WriteLine("Không tìm thấy sách giáo khoa.");
+        }
+
+        // Tìm thành tiền cao nhất
+        Sach sachMax = danhSach[0];
+
+        foreach (Sach s in danhSach)
+        {
+            if (s.GetThanhTien() > sachMax.GetThanhTien())
+            {
+                sachMax = s;
+            }
+        }
+
+        Console.WriteLine("\n========== SÁCH CÓ THÀNH TIỀN CAO NHẤT ==========");
+        Console.WriteLine(sachMax);
+        Console.WriteLine(
+            $"Thành tiền: {sachMax.GetThanhTien():N0} VND");
+    }
+}
