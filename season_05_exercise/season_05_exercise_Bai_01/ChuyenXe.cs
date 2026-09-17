@@ -15,68 +15,40 @@ using System.IO;
 
 namespace Model.Bai_01
 {
-    /// <summary>
-    /// Lớp cha abstract mô tả thông tin chung của một chuyến xe
-    /// </summary>
+    // Lớp cha abstract mô tả thông tin chung của một chuyến xe.
     public abstract class ChuyenXe
     {
         // ===== THUỘC TÍNH =====
-        private string maSo;
-        private string hoTenTaiXe;
-        private string soXe;
-        private double doanhThu;
-
-        // ===== PROPERTY =====
-        public string MaSo
-        {
-            get { return maSo; }
-            set { maSo = value; }
-        }
-
-        public string HoTenTaiXe
-        {
-            get { return hoTenTaiXe; }
-            set { hoTenTaiXe = value; }
-        }
-
-        public string SoXe
-        {
-            get { return soXe; }
-            set { soXe = value; }
-        }
-
-        public double DoanhThu
-        {
-            get { return doanhThu; }
-            set
-            {
-                if (value >= 0)
-                    doanhThu = value;
-            }
-        }
+        protected string maSo;
+        protected string hoTenTaiXe;
+        protected string soXe;
+        protected double doanhThu;
 
         // ===== CONSTRUCTOR =====
-        /// <summary>Constructor default</summary>
-        public ChuyenXe()
+        protected ChuyenXe()
         {
-            maSo = "";
-            hoTenTaiXe = "";
-            soXe = "";
+            maSo = string.Empty;
+            hoTenTaiXe = string.Empty;
+            soXe = string.Empty;
             doanhThu = 0;
         }
 
-        /// <summary>Constructor Parameter</summary>
-        public ChuyenXe(string maSo, string hoTenTaiXe,
-                        string soXe, double doanhThu)
+        protected ChuyenXe(string maSo, string hoTenTaiXe, string soXe, double doanhThu)
         {
-            MaSo = maSo;
-            HoTenTaiXe = hoTenTaiXe;
-            SoXe = soXe;
-            DoanhThu = doanhThu;
+            this.maSo = maSo;
+            this.hoTenTaiXe = hoTenTaiXe;
+            this.soXe = soXe;
+            this.doanhThu = doanhThu >= 0 ? doanhThu : 0;
         }
 
+        // ===== PROPERTY (chỉ đọc) =====
+        public string MaSo => maSo;
+        public string HoTenTaiXe => hoTenTaiXe;
+        public string SoXe => soXe;
+        public double DoanhThu => doanhThu;
+
         // ===== PHƯƠNG THỨC =====
-  
+        // Lớp con tự định dạng thông tin hiển thị riêng.
         public abstract override string ToString();
     }
 }

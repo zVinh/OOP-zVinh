@@ -15,82 +15,47 @@ using System.IO;
 
 namespace Model.Bai_02
 {
+    // Lớp cha abstract chứa thông tin chung của mọi loại sách.
     public abstract class Sach
     {
-        // Fields
-        private string maSach;
-        private DateOnly ngayNhap;
-        private double donGia;
-        private int soLuong;
-        private string nhaXuatBan;
+        // ===== THUỘC TÍNH =====
+        protected string maSach;
+        protected DateOnly ngayNhap;
+        protected double donGia;
+        protected int soLuong;
+        protected string nhaXuatBan;
 
-        // Properties
-        public string MaSach
+        // ===== CONSTRUCTOR =====
+        protected Sach()
         {
-            get { return maSach; }
-            set { maSach = value; }
-        }
-
-        public DateOnly NgayNhap
-        {
-            get { return ngayNhap; }
-            set { ngayNhap = value; }
-        }
-
-        public double DonGia
-        {
-            get { return donGia; }
-            set
-            {
-                if (value >= 0)
-                    donGia = value;
-            }
-        }
-
-        public int SoLuong
-        {
-            get { return soLuong; }
-            set
-            {
-                if (value >= 0)
-                    soLuong = value;
-            }
-        }
-
-        public string NhaXuatBan
-        {
-            get { return nhaXuatBan; }
-            set { nhaXuatBan = value; }
-        }
-
-        // Constructor default
-        public Sach()
-        {
-            maSach = "";
+            maSach = string.Empty;
             ngayNhap = DateOnly.FromDateTime(DateTime.Now);
             donGia = 0;
             soLuong = 0;
-            nhaXuatBan = "";
+            nhaXuatBan = string.Empty;
         }
 
-        // Constructor Parameter
-        public Sach(
-            string maSach,
-            DateOnly ngayNhap,
-            double donGia,
-            int soLuong,
-            string nhaXuatBan)
+        protected Sach(string maSach, DateOnly ngayNhap, double donGia, int soLuong, string nhaXuatBan)
         {
-            MaSach = maSach;
-            NgayNhap = ngayNhap;
-            DonGia = donGia;
-            SoLuong = soLuong;
-            NhaXuatBan = nhaXuatBan;
+            this.maSach = maSach;
+            this.ngayNhap = ngayNhap;
+            this.donGia = donGia;
+            this.soLuong = soLuong;
+            this.nhaXuatBan = nhaXuatBan;
         }
 
-        // Abstract methods
+        // ===== PROPERTY (chỉ đọc) =====
+        public string MaSach => maSach;
+        public DateOnly NgayNhap => ngayNhap;
+        public double DonGia => donGia;
+        public int SoLuong => soLuong;
+        public string NhaXuatBan => nhaXuatBan;
+
+        // ===== PHƯƠNG THỨC TRỪU TƯỢNG =====
+        // Lớp con tự cài đặt công thức tính thành tiền riêng.
         public abstract double GetThanhTien();
 
+        // Lớp con tự định dạng thông tin sách.
         public abstract override string ToString();
     }
 }

@@ -15,64 +15,41 @@ using System.IO;
 
 namespace Model.Bai_01
 {
-    /// <summary>
-    /// Lớp mô tả chuyến xe ngoại thành
-    /// </summary>
+    // Lớp mô tả chuyến xe ngoại thành, kế thừa từ lớp ChuyenXe.
     public class ChuyenXeNgoaiThanh : ChuyenXe
     {
         // ===== THUỘC TÍNH RIÊNG =====
         private string noiDen;
         private int soNgay;
 
-        // ===== PROPERTY =====
-        public string NoiDen
-        {
-            get { return noiDen; }
-            set { noiDen = value; }
-        }
-
-        public int SoNgay
-        {
-            get { return soNgay; }
-            set
-            {
-                if (value >= 0)
-                    soNgay = value;
-            }
-        }
-
         // ===== CONSTRUCTOR =====
-        /// <summary>Constructor default</summary>
         public ChuyenXeNgoaiThanh() : base()
         {
-            noiDen = "";
+            noiDen = string.Empty;
             soNgay = 0;
         }
 
-        /// <summary>Constructor Parameter</summary>
-        public ChuyenXeNgoaiThanh(string maSo, string hoTenTaiXe,
-                string soXe, double doanhThu,
-                string noiDen, int soNgay)
+        public ChuyenXeNgoaiThanh(string maSo, string hoTenTaiXe, string soXe,
+                                   double doanhThu, string noiDen, int soNgay)
             : base(maSo, hoTenTaiXe, soXe, doanhThu)
         {
-            NoiDen = noiDen;
-            SoNgay = soNgay;
+            this.noiDen = noiDen;
+            this.soNgay = soNgay >= 0 ? soNgay : 0;
         }
 
+        // ===== PROPERTY =====
+        public string NoiDen => noiDen;
+        public int SoNgay => soNgay;
+
         // ===== PHƯƠNG THỨC =====
-        /// <summary>
-        /// Trả về thông tin chuyến xe ngoại thành dạng chuỗi
-        /// </summary>
         public override string ToString()
         {
-            return string.Format(
-                "[Ngoại thành] " +
-                "Mã: {0,-6} | Tài xế: {1,-15} | " +
-                "Số xe: {2,-10} | Nơi đến: {3,-10} | " +
-                "Ngày: {4,2} | DT: {5,12:N0} VND",
-                MaSo, HoTenTaiXe, SoXe,
-                noiDen, soNgay, DoanhThu
-            );
+            return $"[Ngoại thành] Mã: {maSo} | " +
+                   $"Tài xế: {hoTenTaiXe} | " +
+                   $"Số xe: {soXe} | " +
+                   $"Nơi đến: {noiDen} | " +
+                   $"Số ngày: {soNgay} | " +
+                   $"Doanh thu: {doanhThu:N0} VND";
         }
     }
 }

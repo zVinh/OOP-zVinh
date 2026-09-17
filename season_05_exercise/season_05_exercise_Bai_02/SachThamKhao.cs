@@ -16,63 +16,44 @@ using System.IO;
 using Model.Bai_02;
 namespace Model.Bai_02
 {
+    // Lớp mô tả sách tham khảo, kế thừa từ lớp Sach.
     public class SachThamKhao : Sach
     {
-        // Field
+        // ===== THUỘC TÍNH RIÊNG =====
         private double thue;
 
-        // Property
-        public double Thue
-        {
-            get { return thue; }
-            set
-            {
-                if (value >= 0)
-                    thue = value;
-            }
-        }
-
-        // Constructor mặc định
+        // ===== CONSTRUCTOR =====
         public SachThamKhao() : base()
         {
             thue = 0;
         }
 
-        // Constructor đầy đủ tham số
-        public SachThamKhao(
-            string maSach,
-            DateOnly ngayNhap,
-            double donGia,
-            int soLuong,
-            string nhaXuatBan,
-            double thue)
+        public SachThamKhao(string maSach, DateOnly ngayNhap, double donGia,
+                             int soLuong, string nhaXuatBan, double thue)
             : base(maSach, ngayNhap, donGia, soLuong, nhaXuatBan)
         {
-            Thue = thue;
+            this.thue = thue;
         }
 
-        // Tính thành tiền
+        // ===== PROPERTY =====
+        public double Thue => thue;
+
+        // ===== PHƯƠNG THỨC =====
+        // Thành tiền = số lượng * đơn giá + thuế.
         public override double GetThanhTien()
         {
-            return SoLuong * DonGia + thue;
+            return soLuong * donGia + thue;
         }
 
-        // Xuất thông tin
         public override string ToString()
         {
-            return string.Format(
-                "STK | Mã: {0,-8} | NXB: {1,-15} | " +
-                "Ngày: {2:dd/MM/yyyy} | SL: {3,3} | " +
-                "Đơn giá: {4,10:N0} | Thuế: {5,10:N0} | " +
-                "Thành tiền: {6,12:N0} VND",
-                MaSach,
-                NhaXuatBan,
-                NgayNhap,
-                SoLuong,
-                DonGia,
-                thue,
-                GetThanhTien()
-            );
+            return $"Mã sách: {maSach} | " +
+                   $"Ngày nhập: {ngayNhap:dd/MM/yyyy} | " +
+                   $"Đơn giá: {donGia:N0} | " +
+                   $"Số lượng: {soLuong} | " +
+                   $"NXB: {nhaXuatBan} | " +
+                   $"Thuế: {thue:N0} | " +
+                   $"Thành tiền: {GetThanhTien():N0}";
         }
     }
 }

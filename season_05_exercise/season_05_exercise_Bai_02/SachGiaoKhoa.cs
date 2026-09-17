@@ -16,61 +16,50 @@ using System.IO;
 using Model.Bai_02;
 namespace Model.Bai_02
 {
+    // Lớp mô tả sách giáo khoa, kế thừa từ lớp Sach.
     public class SachGiaoKhoa : Sach
     {
-        // Field
-        private bool tinhTrang;
+        // ===== THUỘC TÍNH RIÊNG =====
+        private bool tinhTrang; // true = mới, false = cũ
 
-        // Property
-        public bool TinhTrang
-        {
-            get { return tinhTrang; }
-            set { tinhTrang = value; }
-        }
-
-        // Constructor default
+        // ===== CONSTRUCTOR =====
         public SachGiaoKhoa() : base()
         {
             tinhTrang = true;
         }
 
-        // Constructor parameter
-        public SachGiaoKhoa(
-            string maSach,
-            DateOnly ngayNhap,
-            double donGia,
-            int soLuong,
-            string nhaXuatBan,
-            bool tinhTrang)
+        public SachGiaoKhoa(string maSach, DateOnly ngayNhap, double donGia,
+                             int soLuong, string nhaXuatBan, bool tinhTrang)
             : base(maSach, ngayNhap, donGia, soLuong, nhaXuatBan)
         {
-            TinhTrang = tinhTrang;
+            this.tinhTrang = tinhTrang;
         }
 
-        // Tính thành tiền
+        // ===== PROPERTY =====
+        public bool TinhTrang => tinhTrang;
+
+        // ===== PHƯƠNG THỨC =====
+        // Mới: thành tiền = số lượng * đơn giá.
+        // Cũ: thành tiền = số lượng * đơn giá * 50%.
         public override double GetThanhTien()
         {
-            return tinhTrang
-                ? SoLuong * DonGia
-                : SoLuong * DonGia * 0.5;
+            if (tinhTrang)
+            {
+                return soLuong * donGia;
+            }
+
+            return soLuong * donGia * 0.5;
         }
 
-        // Xuất thông tin
         public override string ToString()
         {
-            return string.Format(
-                "SGK | Mã: {0,-8} | NXB: {1,-15} | " +
-                "Ngày: {2:dd/MM/yyyy} | SL: {3,3} | " +
-                "Đơn giá: {4,10:N0} | Tình trạng: {5,-4} | " +
-                "Thành tiền: {6,12:N0} VND",
-                MaSach,
-                NhaXuatBan,
-                NgayNhap,
-                SoLuong,
-                DonGia,
-                tinhTrang ? "Mới" : "Cũ",
-                GetThanhTien()
-            );
+            return $"Mã sách: {maSach} | " +
+                   $"Ngày nhập: {ngayNhap:dd/MM/yyyy} | " +
+                   $"Đơn giá: {donGia:N0} | " +
+                   $"Số lượng: {soLuong} | " +
+                   $"NXB: {nhaXuatBan} | " +
+                   $"Tình trạng: {(tinhTrang ? "Mới" : "Cũ")} | " +
+                   $"Thành tiền: {GetThanhTien():N0}";
         }
     }
 }

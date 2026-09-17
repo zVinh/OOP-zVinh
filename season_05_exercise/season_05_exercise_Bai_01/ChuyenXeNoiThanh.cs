@@ -15,64 +15,41 @@ using System.IO;
 
 namespace Model.Bai_01
 {
-    /// <summary>
-    /// Lớp mô tả chuyến xe nội thành
-    /// </summary>
+    // Lớp mô tả chuyến xe nội thành, kế thừa từ lớp ChuyenXe.
     public class ChuyenXeNoiThanh : ChuyenXe
     {
         // ===== THUỘC TÍNH RIÊNG =====
         private string soTuyen;
         private double soKm;
 
-        // ===== PROPERTY =====
-        public string SoTuyen
-        {
-            get { return soTuyen; }
-            set { soTuyen = value; }
-        }
-
-        public double SoKm
-        {
-            get { return soKm; }
-            set
-            {
-                if (value >= 0)
-                    soKm = value;
-            }
-        }
-
         // ===== CONSTRUCTOR =====
-        /// <summary>Constructor default</summary>
         public ChuyenXeNoiThanh() : base()
         {
-            soTuyen = "";
+            soTuyen = string.Empty;
             soKm = 0;
         }
 
-        /// <summary>Constructor Parameter</summary>
-        public ChuyenXeNoiThanh(string maSo, string hoTenTaiXe,
-                string soXe, double doanhThu,
-                string soTuyen, double soKm)
+        public ChuyenXeNoiThanh(string maSo, string hoTenTaiXe, string soXe,
+                                 double doanhThu, string soTuyen, double soKm)
             : base(maSo, hoTenTaiXe, soXe, doanhThu)
         {
-            SoTuyen = soTuyen;
-            SoKm = soKm;
+            this.soTuyen = soTuyen;
+            this.soKm = soKm >= 0 ? soKm : 0;
         }
 
+        // ===== PROPERTY =====
+        public string SoTuyen => soTuyen;
+        public double SoKm => soKm;
+
         // ===== PHƯƠNG THỨC =====
-        /// <summary>
-        /// Trả về thông tin chuyến xe nội thành dạng chuỗi
-        /// </summary>
         public override string ToString()
         {
-            return string.Format(
-                "[Nội thành]   " +
-                "Mã: {0,-6} | Tài xế: {1,-15} | " +
-                "Số xe: {2,-10} | Tuyến: {3,-8} | " +
-                "Km: {4,6:F1} | DT: {5,12:N0} VND",
-                MaSo, HoTenTaiXe, SoXe,
-                soTuyen, soKm, DoanhThu
-            );
+            return $"[Nội thành] Mã: {maSo} | " +
+                   $"Tài xế: {hoTenTaiXe} | " +
+                   $"Số xe: {soXe} | " +
+                   $"Tuyến: {soTuyen} | " +
+                   $"Số km: {soKm:N1} | " +
+                   $"Doanh thu: {doanhThu:N0} VND";
         }
     }
 }
