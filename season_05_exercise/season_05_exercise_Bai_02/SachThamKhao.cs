@@ -16,15 +16,12 @@ using System.IO;
 using Model.Bai_02;
 namespace Model.Bai_02
 {
-    /// <summary>
-    /// Sách tham khảo — thành tiền = SoLuong * DonGia + Thue
-    /// </summary>
     public class SachThamKhao : Sach
     {
-        // ===== FIELD =====
+        // Field
         private double thue;
 
-        // ===== PROPERTY =====
+        // Property
         public double Thue
         {
             get { return thue; }
@@ -35,29 +32,32 @@ namespace Model.Bai_02
             }
         }
 
-        // ===== CONSTRUCTOR =====
+        // Constructor mặc định
         public SachThamKhao() : base()
         {
             thue = 0;
         }
 
-        public SachThamKhao(string maSach, DateTime ngayNhap,
-                double donGia, int soLuong,
-                string nhaXuatBan, double thue)
+        // Constructor đầy đủ tham số
+        public SachThamKhao(
+            string maSach,
+            DateOnly ngayNhap,
+            double donGia,
+            int soLuong,
+            string nhaXuatBan,
+            double thue)
             : base(maSach, ngayNhap, donGia, soLuong, nhaXuatBan)
         {
             Thue = thue;
         }
 
-        // ===== PHƯƠNG THỨC =====
-        /// <summary>
-        /// ThanhTien = SoLuong * DonGia + Thue
-        /// </summary>
+        // Tính thành tiền
         public override double GetThanhTien()
         {
             return SoLuong * DonGia + thue;
         }
 
+        // Xuất thông tin
         public override string ToString()
         {
             return string.Format(
@@ -65,9 +65,12 @@ namespace Model.Bai_02
                 "Ngày: {2:dd/MM/yyyy} | SL: {3,3} | " +
                 "Đơn giá: {4,10:N0} | Thuế: {5,10:N0} | " +
                 "Thành tiền: {6,12:N0} VND",
-                MaSach, NhaXuatBan,
-                NgayNhap, SoLuong,
-                DonGia, thue,
+                MaSach,
+                NhaXuatBan,
+                NgayNhap,
+                SoLuong,
+                DonGia,
+                thue,
                 GetThanhTien()
             );
         }

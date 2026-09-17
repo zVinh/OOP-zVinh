@@ -16,40 +16,38 @@ using System.IO;
 using Model.Bai_02;
 namespace Model.Bai_02
 {
-    /// <summary>
-    /// Sách giáo khoa — thành tiền tính theo tình trạng mới/cũ
-    /// </summary>
     public class SachGiaoKhoa : Sach
     {
-        // ===== FIELD =====
-        private bool tinhTrang; // true = mới, false = cũ
+        // Field
+        private bool tinhTrang;
 
-        // ===== PROPERTY =====
+        // Property
         public bool TinhTrang
         {
             get { return tinhTrang; }
             set { tinhTrang = value; }
         }
 
-        // ===== CONSTRUCTOR =====
+        // Constructor default
         public SachGiaoKhoa() : base()
         {
             tinhTrang = true;
         }
 
-        public SachGiaoKhoa(string maSach, DateTime ngayNhap,
-                double donGia, int soLuong,
-                string nhaXuatBan, bool tinhTrang)
+        // Constructor parameter
+        public SachGiaoKhoa(
+            string maSach,
+            DateOnly ngayNhap,
+            double donGia,
+            int soLuong,
+            string nhaXuatBan,
+            bool tinhTrang)
             : base(maSach, ngayNhap, donGia, soLuong, nhaXuatBan)
         {
             TinhTrang = tinhTrang;
         }
 
-        // ===== PHƯƠNG THỨC =====
-        /// <summary>
-        /// Mới: SoLuong * DonGia
-        /// Cũ:  SoLuong * DonGia * 50%
-        /// </summary>
+        // Tính thành tiền
         public override double GetThanhTien()
         {
             return tinhTrang
@@ -57,6 +55,7 @@ namespace Model.Bai_02
                 : SoLuong * DonGia * 0.5;
         }
 
+        // Xuất thông tin
         public override string ToString()
         {
             return string.Format(
@@ -64,8 +63,10 @@ namespace Model.Bai_02
                 "Ngày: {2:dd/MM/yyyy} | SL: {3,3} | " +
                 "Đơn giá: {4,10:N0} | Tình trạng: {5,-4} | " +
                 "Thành tiền: {6,12:N0} VND",
-                MaSach, NhaXuatBan,
-                NgayNhap, SoLuong,
+                MaSach,
+                NhaXuatBan,
+                NgayNhap,
+                SoLuong,
                 DonGia,
                 tinhTrang ? "Mới" : "Cũ",
                 GetThanhTien()

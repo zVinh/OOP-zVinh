@@ -10,12 +10,13 @@ class Program
     {
         Console.OutputEncoding = Encoding.UTF8;
 
+        // ===== TẠO DANH SÁCH =====
         Sach[] danhSach =
         {
             // 3 sách giáo khoa
             new SachGiaoKhoa(
                 "SGK001",
-                new DateTime(2024, 1, 10),
+                new DateOnly(2024, 1, 10),
                 50000,
                 5,
                 "NXB Giáo Dục",
@@ -23,7 +24,7 @@ class Program
 
             new SachGiaoKhoa(
                 "SGK002",
-                new DateTime(2024, 2, 15),
+                new DateOnly(2024, 2, 15),
                 80000,
                 3,
                 "NXB Trẻ",
@@ -31,7 +32,7 @@ class Program
 
             new SachGiaoKhoa(
                 "SGK003",
-                new DateTime(2024, 3, 20),
+                new DateOnly(2024, 3, 20),
                 60000,
                 4,
                 "NXB Giáo Dục",
@@ -40,15 +41,15 @@ class Program
             // 3 sách tham khảo
             new SachThamKhao(
                 "STK001",
-                new DateTime(2024, 1, 5),
+                new DateOnly(2024, 1, 5),
                 120000,
                 2,
-                "NXB Khoa Học",
+                "NXB Trẻ",
                 10000),
 
             new SachThamKhao(
                 "STK002",
-                new DateTime(2024, 2, 10),
+                new DateOnly(2024, 2, 10),
                 150000,
                 1,
                 "NXB Giáo Dục",
@@ -56,14 +57,14 @@ class Program
 
             new SachThamKhao(
                 "STK003",
-                new DateTime(2024, 3, 15),
+                new DateOnly(2024, 3, 15),
                 200000,
                 3,
                 "NXB Trẻ",
                 20000)
         };
 
-        // In danh sách
+        // ===== IN DANH SÁCH =====
         Console.WriteLine("========== DANH SÁCH SÁCH ==========");
 
         foreach (Sach s in danhSach)
@@ -71,7 +72,7 @@ class Program
             Console.WriteLine(s);
         }
 
-        // Tổng thành tiền từng loại
+        // ===== TÍNH TỔNG THÀNH TIỀN =====
         double tongSGK = 0;
         double tongSTK = 0;
 
@@ -87,11 +88,29 @@ class Program
         Console.WriteLine($"Tổng SGK: {tongSGK:N0} VND");
         Console.WriteLine($"Tổng STK: {tongSTK:N0} VND");
 
+        // ===== TÌM SÁCH CÓ THÀNH TIỀN CAO NHẤT =====
+        Sach sachMax = danhSach[0];
+
+        foreach (Sach s in danhSach)
+        {
+            if (s.GetThanhTien() > sachMax.GetThanhTien())
+            {
+                sachMax = s;
+            }
+        }
+
+        Console.WriteLine(
+            "\n========== SÁCH CÓ THÀNH TIỀN CAO NHẤT ==========");
+
+        Console.WriteLine(sachMax);
+
+        Console.WriteLine(
+            $"Thành tiền: {sachMax.GetThanhTien():N0} VND");
+
         // ===== TÌM SÁCH GIÁO KHOA THEO NXB =====
-        Console.WriteLine("\n===== HƯỚNG DẪN =====");
+        Console.WriteLine("\n===== HƯỚNG DẪN TÌM SÁCH GIÁO KHOA THEO NXB =====");
         Console.WriteLine("Nhập Giao_Duc -> NXB Giáo Dục");
         Console.WriteLine("Nhập Tre      -> NXB Trẻ");
-        Console.WriteLine("Nhập Kim_Dong -> NXB Kim Đồng");
 
         Console.Write("\nNhập NXB K: ");
         string k = (Console.ReadLine() ?? "").Trim();
@@ -108,13 +127,9 @@ class Program
                 nxbCanTim = "NXB Trẻ";
                 break;
 
-            case "Kim_Dong":
-                nxbCanTim = "NXB Kim Đồng";
-                break;
-
             default:
                 Console.WriteLine("NXB không hợp lệ!");
-                Console.WriteLine("Chỉ được nhập: Giao_Duc, Tre, Kim_Dong");
+                Console.WriteLine("Chỉ được nhập: Giao_Duc, Tre");
                 return;
         }
 
@@ -137,20 +152,6 @@ class Program
             Console.WriteLine("Không tìm thấy sách giáo khoa.");
         }
 
-        // Tìm thành tiền cao nhất
-        Sach sachMax = danhSach[0];
-
-        foreach (Sach s in danhSach)
-        {
-            if (s.GetThanhTien() > sachMax.GetThanhTien())
-            {
-                sachMax = s;
-            }
-        }
-
-        Console.WriteLine("\n========== SÁCH CÓ THÀNH TIỀN CAO NHẤT ==========");
-        Console.WriteLine(sachMax);
-        Console.WriteLine(
-            $"Thành tiền: {sachMax.GetThanhTien():N0} VND");
+        
     }
 }

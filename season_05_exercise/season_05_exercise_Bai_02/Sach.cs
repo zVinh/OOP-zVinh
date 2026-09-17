@@ -15,26 +15,23 @@ using System.IO;
 
 namespace Model.Bai_02
 {
-    /// <summary>
-    /// Lớp cha abstract mô tả thông tin chung của một cuốn sách
-    /// </summary>
     public abstract class Sach
     {
-        // ===== FIELDS =====
+        // Fields
         private string maSach;
-        private DateTime ngayNhap;
+        private DateOnly ngayNhap;
         private double donGia;
         private int soLuong;
         private string nhaXuatBan;
 
-        // ===== PROPERTIES =====
+        // Properties
         public string MaSach
         {
             get { return maSach; }
             set { maSach = value; }
         }
 
-        public DateTime NgayNhap
+        public DateOnly NgayNhap
         {
             get { return ngayNhap; }
             set { ngayNhap = value; }
@@ -66,19 +63,23 @@ namespace Model.Bai_02
             set { nhaXuatBan = value; }
         }
 
-        // ===== CONSTRUCTOR =====
+        // Constructor default
         public Sach()
         {
             maSach = "";
-            ngayNhap = DateTime.Now;
+            ngayNhap = DateOnly.FromDateTime(DateTime.Now);
             donGia = 0;
             soLuong = 0;
             nhaXuatBan = "";
         }
 
-        public Sach(string maSach, DateTime ngayNhap,
-                    double donGia, int soLuong,
-                    string nhaXuatBan)
+        // Constructor Parameter
+        public Sach(
+            string maSach,
+            DateOnly ngayNhap,
+            double donGia,
+            int soLuong,
+            string nhaXuatBan)
         {
             MaSach = maSach;
             NgayNhap = ngayNhap;
@@ -87,8 +88,9 @@ namespace Model.Bai_02
             NhaXuatBan = nhaXuatBan;
         }
 
-        // ===== PHƯƠNG THỨC ABSTRACT =====
-        public abstract override string ToString();
+        // Abstract methods
         public abstract double GetThanhTien();
+
+        public abstract override string ToString();
     }
 }
