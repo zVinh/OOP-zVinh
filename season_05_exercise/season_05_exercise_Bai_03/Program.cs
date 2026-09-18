@@ -16,10 +16,9 @@ using System.IO;
 using Model.Bai_03;
 namespace Model.Bai_03
 {
-    // Lớp điều khiển chương trình và xử lý danh sách giao dịch.
     public class Program
     {
-        // ===== CHƯƠNG TRÌNH CHÍNH =====
+        
         public static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;

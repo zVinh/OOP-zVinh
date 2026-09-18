@@ -23,13 +23,13 @@ namespace Model.Bai_03
         private string loaiVang;
 
         // ===== CONSTRUCTOR =====
-        // Constructor mặc định gọi constructor của lớp cha.
+        // Constructor default gọi constructor của lớp cha.
         public GiaoDichVang() : base()
         {
             loaiVang = string.Empty;
         }
 
-        // Constructor có tham số.
+        // Constructor Parameter
         public GiaoDichVang(string maGiaoDich, DateOnly ngayGiaoDich, double donGia, int soLuong, string loaiVang)
             : base(maGiaoDich, ngayGiaoDich, donGia, soLuong)
         {
@@ -43,16 +43,16 @@ namespace Model.Bai_03
         // Thành tiền giao dịch vàng = số lượng * đơn giá.
         public override double GetThanhTien()
         {
-            return soLuong * donGia;
+            return SoLuong * DonGia;
         }
 
         // Trả về thông tin giao dịch vàng dạng chuỗi.
         public override string ToString()
         {
-            return $"Mã giao dịch: {maGiaoDich} | " +
-                   $"Ngày giao dịch: {ngayGiaoDich:dd/MM/yyyy} | " +
-                   $"Đơn giá: {donGia:N0} | " +
-                   $"Số lượng: {soLuong} | " +
+            return $"Mã giao dịch: {MaGiaoDich} | " +
+                   $"Ngày giao dịch: {NgayGiaoDich:dd/MM/yyyy} | " +
+                   $"Đơn giá: {DonGia:N0} | " +
+                   $"Số lượng: {SoLuong} | " +
                    $"Loại vàng: {loaiVang} | " +
                    $"Thành tiền: {GetThanhTien():N0}";
         }

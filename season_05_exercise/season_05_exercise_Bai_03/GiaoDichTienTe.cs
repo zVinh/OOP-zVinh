@@ -24,14 +24,14 @@ namespace Model.Bai_03
         private string loaiTienTe;
 
         // ===== CONSTRUCTOR =====
-        // Constructor mặc định gọi constructor của lớp cha.
+        // Constructor default gọi constructor của lớp cha.
         public GiaoDichTienTe() : base()
         {
             tiGia = 1;
             loaiTienTe = string.Empty;
         }
 
-        // Constructor có tham số.
+        // Constructor Parameter
         public GiaoDichTienTe(string maGiaoDich, DateOnly ngayGiaoDich, double donGia, int soLuong, double tiGia, string loaiTienTe)
             : base(maGiaoDich, ngayGiaoDich, donGia, soLuong)
         {
@@ -50,19 +50,19 @@ namespace Model.Bai_03
         {
             if (loaiTienTe.Equals("VND", StringComparison.OrdinalIgnoreCase))
             {
-                return soLuong * donGia;
+                return SoLuong * DonGia;
             }
 
-            return soLuong * donGia * tiGia;
+            return SoLuong * DonGia * tiGia;
         }
 
         // Trả về thông tin giao dịch tiền tệ dạng chuỗi.
         public override string ToString()
         {
-            return $"Mã giao dịch: {maGiaoDich} | " +
-                   $"Ngày giao dịch: {ngayGiaoDich:dd/MM/yyyy} | " +
-                   $"Đơn giá: {donGia:N0} | " +
-                   $"Số lượng: {soLuong} | " +
+            return $"Mã giao dịch: {MaGiaoDich} | " +
+                   $"Ngày giao dịch: {NgayGiaoDich:dd/MM/yyyy} | " +
+                   $"Đơn giá: {DonGia:N0} | " +
+                   $"Số lượng: {SoLuong} | " +
                    $"Tỉ giá: {tiGia:N0} | " +
                    $"Loại tiền tệ: {loaiTienTe} | " +
                    $"Thành tiền: {GetThanhTien():N0}";

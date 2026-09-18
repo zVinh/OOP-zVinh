@@ -44,12 +44,12 @@ namespace Model.Bai_01
         // ===== PHƯƠNG THỨC =====
         public override string ToString()
         {
-            return $"[Nội thành] Mã: {maSo} | " +
-                   $"Tài xế: {hoTenTaiXe} | " +
-                   $"Số xe: {soXe} | " +
+            return $"[Nội thành] Mã: {MaSo} | " +
+                   $"Tài xế: {HoTenTaiXe} | " +
+                   $"Số xe: {SoXe} | " +
                    $"Tuyến: {soTuyen} | " +
                    $"Số km: {soKm:N1} | " +
-                   $"Doanh thu: {doanhThu:N0} VND";
+                   $"Doanh thu: {DoanhThu:N0} VND";
         }
     }
 }

@@ -19,13 +19,13 @@ namespace Model.Bai_01
     public abstract class ChuyenXe
     {
         // ===== THUỘC TÍNH =====
-        protected string maSo;
-        protected string hoTenTaiXe;
-        protected string soXe;
-        protected double doanhThu;
+        private string maSo;
+        private string hoTenTaiXe;
+        private string soXe;
+        private double doanhThu;
 
         // ===== CONSTRUCTOR =====
-        protected ChuyenXe()
+        public ChuyenXe()
         {
             maSo = string.Empty;
             hoTenTaiXe = string.Empty;
@@ -33,7 +33,7 @@ namespace Model.Bai_01
             doanhThu = 0;
         }
 
-        protected ChuyenXe(string maSo, string hoTenTaiXe, string soXe, double doanhThu)
+        public ChuyenXe(string maSo, string hoTenTaiXe, string soXe, double doanhThu)
         {
             this.maSo = maSo;
             this.hoTenTaiXe = hoTenTaiXe;

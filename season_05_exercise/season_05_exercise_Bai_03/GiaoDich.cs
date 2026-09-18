@@ -19,14 +19,14 @@ namespace Model.Bai_03
     public abstract class GiaoDich
     {
         // ===== THUỘC TÍNH =====
-        protected string maGiaoDich;
-        protected DateOnly ngayGiaoDich;
-        protected double donGia;
-        protected int soLuong;
+        private string maGiaoDich;
+        private DateOnly ngayGiaoDich;
+        private double donGia;
+        private int soLuong;
 
         // ===== CONSTRUCTOR =====
-        // Constructor mặc định.
-        protected GiaoDich()
+        // Constructor default.
+        public GiaoDich()
         {
             maGiaoDich = string.Empty;
             ngayGiaoDich = DateOnly.FromDateTime(DateTime.Now);
@@ -34,8 +34,8 @@ namespace Model.Bai_03
             soLuong = 0;
         }
 
-        // Constructor có tham số.
-        protected GiaoDich(string maGiaoDich, DateOnly ngayGiaoDich, double donGia, int soLuong)
+        // Constructor Parameter.
+        public GiaoDich(string maGiaoDich, DateOnly ngayGiaoDich, double donGia, int soLuong)
         {
             this.maGiaoDich = maGiaoDich;
             this.ngayGiaoDich = ngayGiaoDich;
